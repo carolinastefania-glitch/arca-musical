@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arca Musical</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>🎼 Arca Musical</h1>
+
+        <p class="subtitulo">
+            Toda la música de tu parroquia en un solo lugar
+        </p>
+
+        <input
+                type="text"
+                id="buscador"
+                placeholder="🔍 ¿Qué canto estás buscando?">
+
+        <div id="resultados-busqueda" class="categorias"></div>
+
+        <h2 class="titulo-seccion">🎵 Partes de la Misa</h2>
+
+        <div id="partes-misa" class="categorias"></div>
+
+        <h2 class="titulo-seccion">🎶 Cantos</h2>
+
+        <div id="lista-cantos" class="categorias"></div>
+
+        <h2 class="titulo-seccion">📅 Tiempos Litúrgicos</h2>
+
+        <div id="celebraciones" class="categorias"></div>
+
+            <div class="tarjeta adviento">Adviento</div>
+            <div class="tarjeta navidad">Navidad</div>
+            <div class="tarjeta cuaresma">Cuaresma</div>
+            <div class="tarjeta pascua">Pascua de Resurrección</div>
+            <div class="tarjeta pentecostes">Pentecostés</div>
+            <div class="tarjeta ordinario">Tiempo Ordinario</div>
+
+        </div>
+
+        <h2 class="titulo-seccion">⛪ Celebraciones Especiales</h2>
+
+        <div id="tiempos-liturgicos" class="categorias"></div>
+
+            <div class="tarjeta camilo">San Camilo de Lelis</div>
+            <div class="tarjeta rosa">Santa Rosa de Lima</div>
+            <div class="tarjeta corpus">Corpus Christi</div>
+            <div class="tarjeta cristorey">Cristo Rey</div>
+            <div class="tarjeta sagrado">Sagrado Corazón de Jesús</div>
+            <div class="tarjeta inmaculado">Inmaculado Corazón de María</div>
+            <div class="tarjeta jose">San José</div>
+            <div class="tarjeta maria">Santa María</div>
+            <div class="tarjeta bautizos">Bautizos</div>
+            <div class="tarjeta comuniones">Primeras Comuniones</div>
+            <div class="tarjeta confirmaciones">Confirmaciones</div>
+            <div class="tarjeta matrimonios">Matrimonios</div>
+
+        </div>
+
+    </div>
+
+    <script src="js/datos.js"></script>
+    <script src="js/cantos.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

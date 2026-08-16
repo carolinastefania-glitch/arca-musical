@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arca Musical</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/canto.css">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <button id="volver">← Volver</button>
+
+        <h1 id="titulo-canto"></h1>
+
+        <p><strong>Tono:</strong> <span id="tono"></span></p>
+
+        <p><strong>Capo:</strong> <span id="capo"></span></p>
+
+        <p><strong>Autor:</strong> <span id="autor"></span></p>
+
+        <button id="btn-favorito">☆ Favorito</button>
+
+        <label>
+            <input type="checkbox" id="mostrar-acordes" checked>
+            Mostrar acordes
+        </label>
+
+        <button id="btn-audio">🎧 Audio</button>
+
+        <button id="btn-notas">📝 Notas</button>
+
+        <div id="contenido-canto"></div>
+
+    </div>
+
+    <div id="modal-notas" class="modal">
+
+        <div class="modal-contenido">
+
+            <button id="cerrar-modal">✕</button>
+
+            <p id="texto-notas"></p>
+
+        </div>
+
+    </div>
+
+    <script src="js/datos.js"></script>
+    <script src="js/cantos.js"></script>
+    <script src="js/canto.js"></script>
+
+</body>
+
+</html>
