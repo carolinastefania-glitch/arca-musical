@@ -1,0 +1,149 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:linear-gradient(
+        180deg,
+        #181818,
+        #101010,
+        #090909
+    );
+
+    color:white;
+
+}
+
+.app{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:#161616;
+    padding:30px;
+    border-right:1px solid #2b2b2b;
+}
+
+.sidebar h2{
+    margin-bottom:40px;
+}
+
+.sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.sidebar button{
+    background:none;
+    border:none;
+    color:white;
+    text-align:left;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:16px;
+}
+
+.sidebar button:hover{
+    background:#242424;
+}
+
+.contenido{
+    flex:1;
+    padding:50px;
+}
+
+.contenido h1{
+    font-size:52px;
+    margin-bottom:25px;
+}
+
+input{
+
+    width:100%;
+
+    padding:22px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#1d1d1d;
+
+    color:white;
+
+    font-size:20px;
+
+    outline:none;
+
+    transition:.3s;
+
+    margin-bottom:20px;
+}
+
+input:focus{
+
+    background:#262626;
+
+}
+
+.categorias{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.tarjeta{
+    height:170px;
+    border-radius:20px;
+    padding:20px;
+
+    display:flex;
+    align-items:flex-end;
+
+    font-size:28px;
+    font-weight:bold;
+
+    color:white;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:0.35s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.tarjeta:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 18px 45px rgba(0,0,0,.5);
+}
+
+.titulo-seccion{
+    margin-top:50px;
+    margin-bottom:20px;
+    font-size:28px;
+    color:#d4d4d4;
+}
+
+.entrada{
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.65)
+        ),
+        url("../img/entrada.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
