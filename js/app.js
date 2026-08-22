@@ -1,22 +1,17 @@
-const contenedor = document.getElementById("partes-misa");
-
 const buscador = document.getElementById("buscador");
 
-// =========================
-// CATEGORÍAS
-// =========================
 
-datos.categorias.forEach(categoria => {
+// =====================================================
+// FUNCIÓN PARA CREAR UNA TARJETA
+// =====================================================
+
+function crearTarjeta(categoria) {
 
     const tarjeta = document.createElement("div");
 
     tarjeta.className = "tarjeta";
 
     tarjeta.textContent = categoria.nombre;
-
-    tarjeta.style.backgroundImage =
-        `linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.65)),
-        url("img/${categoria.imagen}.jpg")`;
 
     tarjeta.addEventListener("click", () => {
 
@@ -25,30 +20,80 @@ datos.categorias.forEach(categoria => {
 
     });
 
-    contenedor.appendChild(tarjeta);
+    return tarjeta;
+
+}
+
+
+// =====================================================
+// PARTES DE LA MISA
+// =====================================================
+
+const contenedorPartes =
+    document.getElementById("partes-misa");
+
+datos.categorias.forEach(categoria => {
+
+    const tarjeta = crearTarjeta(categoria);
+
+    contenedorPartes.appendChild(tarjeta);
 
 });
 
 
-// =========================
+// =====================================================
+// TIEMPOS LITÚRGICOS
+// =====================================================
+
+const contenedorTiempos =
+    document.getElementById("tiempos-liturgicos");
+
+datos.tiemposLiturgicos.forEach(tiempo => {
+
+    const tarjeta = crearTarjeta(tiempo);
+
+    contenedorTiempos.appendChild(tarjeta);
+
+});
+
+
+// =====================================================
+// CELEBRACIONES ESPECIALES
+// =====================================================
+
+const contenedorCelebraciones =
+    document.getElementById("celebraciones");
+
+datos.celebraciones.forEach(celebracion => {
+
+    const tarjeta = crearTarjeta(celebracion);
+
+    contenedorCelebraciones.appendChild(tarjeta);
+
+});
+
+
+// =====================================================
 // BUSCADOR PRINCIPAL
-// =========================
+// =====================================================
 
 buscador.addEventListener("input", () => {
 
-    const texto = buscador.value
-        .toLowerCase()
-        .trim();
+    const texto =
+        buscador.value.toLowerCase().trim();
+
+    const resultados =
+        document.getElementById("resultados-busqueda");
 
     if (texto === "") {
 
-        document.getElementById("resultados-busqueda").innerHTML = "";
+        resultados.innerHTML = "";
 
         return;
 
     }
 
-    const resultados = cantos.filter(canto =>
+    const encontrados = cantos.filter(canto =>
 
         canto.titulo
             .toLowerCase()
@@ -56,25 +101,25 @@ buscador.addEventListener("input", () => {
 
     );
 
-    mostrarResultados(resultados);
+    mostrarResultados(encontrados);
 
 });
 
 
-// =========================
-// MOSTRAR RESULTADOS
-// =========================
+// =====================================================
+// MOSTRAR RESULTADOS DEL BUSCADOR
+// =====================================================
 
 function mostrarResultados(resultados) {
 
-    const contenedorResultados =
+    const contenedor =
         document.getElementById("resultados-busqueda");
 
-    contenedorResultados.innerHTML = "";
+    contenedor.innerHTML = "";
 
     if (resultados.length === 0) {
 
-        contenedorResultados.innerHTML =
+        contenedor.innerHTML =
             "<p>No encontramos ningún canto.</p>";
 
         return;
@@ -83,13 +128,15 @@ function mostrarResultados(resultados) {
 
     resultados.forEach(canto => {
 
-        const tarjeta = document.createElement("div");
+        const tarjeta =
+            document.createElement("div");
 
         tarjeta.className = "tarjeta";
 
         tarjeta.textContent = canto.titulo;
 
-        const indice = cantos.indexOf(canto);
+        const indice =
+            cantos.indexOf(canto);
 
         tarjeta.addEventListener("click", () => {
 
@@ -98,7 +145,7 @@ function mostrarResultados(resultados) {
 
         });
 
-        contenedorResultados.appendChild(tarjeta);
+        contenedor.appendChild(tarjeta);
 
     });
 

@@ -8,21 +8,51 @@ const lista = document.getElementById("lista-cantos");
 
 const buscador = document.getElementById("buscador");
 
-// Buscar cantos de esta categoría
+// ------------------------------------
+// FILTRAR CANTOS
+// ------------------------------------
 
-const cantosFiltrados = cantos.filter(canto => {
+function perteneceACategoria(canto, nombre) {
 
-    if (Array.isArray(canto.categorias)) {
-
-        return canto.categorias.includes(nombreCategoria);
-
+    // Categoría principal
+    if (canto.categoria === nombre) {
+        return true;
     }
 
-    return canto.categoria === nombreCategoria;
+    // Varias categorías
+    if (
+        Array.isArray(canto.categorias) &&
+        canto.categorias.includes(nombre)
+    ) {
+        return true;
+    }
 
-});
+    // Tiempo litúrgico
+    if (canto.tiempoLiturgico === nombre) {
+        return true;
+    }
 
-// Mostrar cantos
+    // Celebración especial
+    if (canto.celebracionEspecial === nombre) {
+        return true;
+    }
+
+    return false;
+}
+
+
+// ------------------------------------
+// OBTENER CANTOS DE LA CATEGORÍA
+// ------------------------------------
+
+const cantosFiltrados = cantos.filter(canto =>
+    perteneceACategoria(canto, nombreCategoria)
+);
+
+
+// ------------------------------------
+// MOSTRAR CANTOS
+// ------------------------------------
 
 function mostrarCantos(listaCantos) {
 
@@ -31,13 +61,19 @@ function mostrarCantos(listaCantos) {
     if (listaCantos.length === 0) {
 
         lista.innerHTML = `
-            <p>No hay cantos en esta categoría.</p>
+            <p style="
+                color:#aaa;
+                font-size:18px;
+                margin-top:30px;
+            ">
+                No hay cantos registrados en esta categoría todavía.
+            </p>
         `;
 
         return;
     }
 
-    listaCantos.forEach(canto => {
+    listaCantos.forEach((canto) => {
 
         const tarjeta = document.createElement("div");
 
@@ -49,7 +85,8 @@ function mostrarCantos(listaCantos) {
 
         tarjeta.addEventListener("click", () => {
 
-            window.location.href = `canto.html?id=${indice}`;
+            window.location.href =
+                `canto.html?id=${indice}`;
 
         });
 
@@ -59,26 +96,31 @@ function mostrarCantos(listaCantos) {
 
 }
 
-// Mostrar todos al entrar
+
+// ------------------------------------
+// MOSTRAR AL ABRIR
+// ------------------------------------
 
 mostrarCantos(cantosFiltrados);
 
+
+// ------------------------------------
 // BUSCADOR
+// ------------------------------------
 
-buscador.addEventListener("input", () => {
+if (buscador) {
 
-    const texto = buscador.value
-        .toLowerCase()
-        .trim();
+    buscador.addEventListener("input", () => {
 
-    const resultados = cantosFiltrados.filter(canto =>
+        const texto =
+            buscador.value.toLowerCase().trim();
 
-        canto.titulo
-            .toLowerCase()
-            .includes(texto)
+        const resultados = cantosFiltrados.filter(canto =>
+            canto.titulo.toLowerCase().includes(texto)
+        );
 
-    );
+        mostrarCantos(resultados);
 
-    mostrarCantos(resultados);
+    });
 
-});
+}
